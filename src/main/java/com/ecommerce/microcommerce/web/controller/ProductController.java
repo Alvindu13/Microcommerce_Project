@@ -1,6 +1,7 @@
 package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
+import com.ecommerce.microcommerce.exceptions.ProductFreeException;
 import com.ecommerce.microcommerce.exceptions.ProductNotFoundException;
 import com.ecommerce.microcommerce.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class ProductController {
 
         Product productAdded =  productDao.save(product);
 
+        if(product.getPrix() == 0) throw new ProductFreeException("Le prix de vente ne peut pas être nul");
+
+
         if (productAdded == null)
             return ResponseEntity.noContent().build();
 
@@ -54,6 +58,23 @@ public class ProductController {
 
         return ResponseEntity.created(location).build();
     }
+
+
+    //Calcule la marge d'un produit
+    @GetMapping(value="/Produits/{id}/marge")
+    public Integer calculerMargeProduit(@PathVariable int id){
+        return null;
+    }
+
+
+    //Calcule la marge d'un produit
+    @GetMapping(value="/Produits/trier")
+    public List<Product> trierProduitsParOrdreAlphabetique(@PathVariable int id){
+        return null;
+    }
+
+
+
 
 
 }
