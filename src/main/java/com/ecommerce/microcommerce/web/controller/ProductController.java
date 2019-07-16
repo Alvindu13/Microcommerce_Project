@@ -80,10 +80,10 @@ public class ProductController {
     }
 
 
-    //Calcule la marge d'un produit
+    //Trie les produits par ordre alphabétique
     @GetMapping(value="/Produits/trier")
     public List<Product> trierProduitsParOrdreAlphabetique(){
-        return productDao.findAll();
+        return productDao.findAllByOrderByNom();
     }
 
 
