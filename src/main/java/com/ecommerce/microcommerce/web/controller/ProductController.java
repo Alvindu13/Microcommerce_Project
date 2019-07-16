@@ -63,7 +63,7 @@ public class ProductController {
 
 
     //Calcule la marge d'un produit
-    @GetMapping(value= "/Produits/Admin")
+    @GetMapping(value= "/AdminProduits")
     public Map<String, Integer> calculerMargeProduit(){
 
         int marge;
@@ -81,7 +81,7 @@ public class ProductController {
 
 
     //Trie les produits par ordre alphabétique
-    @GetMapping(value="/Produits/trier")
+    @GetMapping(value="/Produits/trier/az")
     public List<Product> trierProduitsParOrdreAlphabetique(){
         return productDao.findAllByOrderByNom();
     }
