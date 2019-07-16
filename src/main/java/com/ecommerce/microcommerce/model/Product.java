@@ -1,4 +1,6 @@
 package com.ecommerce.microcommerce.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
@@ -13,7 +15,6 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@JsonIgnoreProperties(value = {"prixAchat", "id"})
 public class Product {
 
     @Id
@@ -25,6 +26,14 @@ public class Product {
     private int prix;
 
     //à ne pas afficher
+    @JsonIgnore
     private int prixAchat;
 
+    public String toStringNoOriginalP() {
+        return "Product{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prix=" + prix +
+                '}';
+    }
 }
